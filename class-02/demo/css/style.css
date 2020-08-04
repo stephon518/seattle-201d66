@@ -1,0 +1,25 @@
+/* Challenge 1: Style the second li of  the OL orange
+
+Challenge 2: background color of all UL's purple
+
+Challenge 3: All third li should be twice as big as all the others
+
+Challenge 4: all first li's should be a different font */
+
+#singing{
+  color: orange;
+}
+
+ul {
+  background-color: purple;
+}
+
+.third{
+  font-size: 2em;
+}
+
+li:first-child{
+  font-family: fantasy;
+}
+
+/* li:nth-child(2) */
