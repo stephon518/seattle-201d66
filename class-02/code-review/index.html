@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Lab 1</title>
+    <style>
+      h1{
+        color: mediumblue;
+        background-color:black;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Class Lab 1</h1>
+    </header>
+    <main>
+      <p style="color:purple; background-color:darkgray">What is your Name?</p>
+      <p style= "color:yellow; background-color:darkorange">Where are you located?</p>
+      <p style="color:lightblue; background-color:maroon">What is your favorite fictional character?</p>
+      <p style="color:hotpink; background-color:slategray">The color picker Red Green or Blue?</p>
+    </main>
+    <footer>
+      <p>Page created by: Matt Ravenmoore</p>
+    </footer>
+    
+    
+    <script>
+      var userName = prompt('What is your Name?');
+      console.log('The users name is ' + userName);
+      alert('Hey there ' + userName + ', welcome to your new homepage!');
+
+      var userLocation = prompt('Where are you located?');
+      console.log('The user is located in ' + userLocation);
+      alert( 'Hey there ' + userName + ', from ' + userLocation + ', welcome to your new homepage!');
+
+      var favFiction = prompt('Who is your favorite fictional character?');
+      console.log('The users favorite fictional character is ' + favFiction);
+      alert('Hey there ' + userName + ', from ' + userLocation + ', welcome to your new '+ favFiction + ' homepage!');
+
+      var favColor = prompt('Which of these (Red, Blue, Green) is your favorite color?') .toLowerCase ();
+      switch(favColor) {
+        case "red":
+        console.log('The Users favorite color is ' + favColor);
+        alert('Hey there ' + userName + ' from ' + userLocation +  ', welcome to your new '+ favFiction + ' homepage!  I see ' + favColor + ' is you preferance. Red is the best I agree');
+        break;
+        case "blue":
+        console.log('The Users favorite color is ' + favColor);
+        alert('Hey there ' + userName + ', from ' + userLocation +  ', welcome to your new ' + favFiction + ' homepage! I see ' + favColor + ' is you preferance.Blues are great some of the best things are blue')
+        break;
+        case "green":
+        console.log('The Users favorite color is ' + favColor);
+        alert('Hey there ' + userName + ', from ' + userLocation +  ', welcome to your new ' + favFiction + ' homepage! I see ' + favColor + ' is you preferance.Thats cool but I cant see it sorry.')
+        break;
+        default : alert("You picked a color I dont care about so no fun message for you!");     
+      };
+
+    </script>
+  </body>
+</html>
