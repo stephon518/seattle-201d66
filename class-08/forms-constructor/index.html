@@ -1,0 +1,32 @@
+<!-- goal: make a form to collect information on a person -->
+
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <header></header>
+    <main>
+      <form id="form">
+        <fieldset>
+          <label> name
+            <input name="username" type="text" />
+          </label>
+
+          <label> what is your story?
+            <textarea name="story" type="text"></textarea>
+          </label>
+
+          <label>Are you a cat person or a dog person?
+            <input type="radio" name="animal" value="cat" />
+            <label>Cat</label>
+            <input type="radio" name="animal" value="dog" />
+            <label>Dog</label>
+          </label>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <footer></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
