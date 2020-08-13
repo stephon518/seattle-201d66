@@ -4,6 +4,7 @@ console.log('I AM A DRAGON AND I AM ALIVE');
 var storeHoursArr = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 var allLocations = [];
 var parent = document.getElementById('table');
+var totalOfAllTotals = 0;
 // shoul become a Reusable funtion and or template for opject literal mehtod?
   
   
@@ -53,6 +54,8 @@ Location.prototype.render = function(){
   // get the parent element
   // create a tr
   var tableRow = document.createElement('tr');
+
+  // put store names here
 
   // loop over cookiesSoldEachHour
   for(var i=0; i<storeHoursArr.length; i++){
@@ -164,6 +167,8 @@ function generateHeader(){
   // create a tr
   var tableRow = document.createElement('tr');
 
+  // put in blank cell to hold a space for the store name
+
   // make a loop over the times
   for(var i=0; i<storeHoursArr.length; i++){
     // create a table header
@@ -178,6 +183,42 @@ function generateHeader(){
   parent.appendChild(tableRow);
 }
 
+function generateFooter(){
+  // create a tr
+  var footerRow = document.createElement('tr');
+
+  for(var i=0; i<storeHoursArr.length; i++){
+    var hourlyTotals = 0;
+
+    for(var j=0; j<allLocations.length; j++){
+      hourlyTotals += allLocations[j].cookiesSoldEachHour[i];
+
+      // calculate my total of all totals
+      totalOfAllTotals += allLocations[j].cookiesSoldEachHour[i];
+      console.log('this is my totalOfAlltotals:', totalOfAllTotals);
+    }
+
+    // create a td
+    var footerData = document.createElement('td');
+    // fill it with the hourly Totals
+    footerData.textContent = hourlyTotals;
+    // append it to the tr
+    footerRow.appendChild(footerData);
+
+    // add on our total of all totals!
+
+  }
+  // create a td
+  footerData = document.createElement('td');
+  // fill it with content 
+  footerData.textContent = totalOfAllTotals;
+  // append it to the tr
+  footerRow.appendChild(footerData);
+
+  // append the tr to the parent
+  parent.appendChild(footerRow);
+}
+
 // loop over my allLocations array (which is full of my objec instances) and call my calculateCustomersEachHour prototype followed by my calculateCookiesSoldEachHour prototype.
 function generateContent(){
   for(var i = 0; i<allLocations.length; i++){
@@ -189,3 +230,4 @@ function generateContent(){
 
 generateHeader();
 generateContent();
+generateFooter();

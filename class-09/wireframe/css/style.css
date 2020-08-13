@@ -1,0 +1,24 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 5px 5px 20px 0;
+}
+
+#search-bar{
+  background-color: rgba(136, 136, 136, 0.604);
+  padding: 4px 0 7px 0;
+  text-align: right;
+}
+
+#search-form{
+  border: 1px solid black;
+  border-radius: 60px;
+}
+
+.my-account{
+  font-size: .6em;
+  font-family: sans-serif;
+  vertical-align: 3px;
+}
