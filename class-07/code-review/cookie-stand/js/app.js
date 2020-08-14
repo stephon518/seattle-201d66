@@ -5,6 +5,7 @@ var storeHoursArr = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3
 var allLocations = [];
 var parent = document.getElementById('table');
 var totalOfAllTotals = 0;
+var cookieForm = document.getElementById('cookie-form');
 // shoul become a Reusable funtion and or template for opject literal mehtod?
   
   
@@ -29,6 +30,7 @@ function Location(minCustomers, maxCustomers, averageCookieSale, locationName){
 }
 
 Location.prototype.calculateCustomersEachHour = function(){
+  this.customersEachHour=[];
   // the job of this method is to populate the customersEachHour array
   // use the minCust and the maxCust in a random number function to generate a random number 
   // push that random number to the array
@@ -40,6 +42,8 @@ Location.prototype.calculateCustomersEachHour = function(){
 
 // function to generate our cookiesSoldEachHour array
 Location.prototype.calculateCookiesSoldEachHour = function(){
+  this.cookiesSoldEachHour = [];
+  this.totalCookiesForTheDay = 0;
   //loop through my customersEachHour array and multiply each value by the average cookie sale
   // push that number into my cookiesSoldEachHour array
   for(var i=0; i<this.customersEachHour.length; i++){
@@ -195,7 +199,7 @@ function generateFooter(){
 
       // calculate my total of all totals
       totalOfAllTotals += allLocations[j].cookiesSoldEachHour[i];
-      console.log('this is my totalOfAlltotals:', totalOfAllTotals);
+      // console.log('this is my totalOfAlltotals:', totalOfAllTotals);
     }
 
     // create a td
@@ -227,6 +231,36 @@ function generateContent(){
     allLocations[i].render();
   }
 }
+
+function handleSubmit(){
+
+  // tell the browser to NOT get rid of the data
+  event.preventDefault();
+  // debugger;
+
+  // create variables for data in the form
+    // min customers
+  var minCust = parseInt(event.target.mincustomers.value);
+    // locations
+  var locations = event.target.location.value;
+    // max customers
+  var maxCust = Number(event.target.maxcustomers.value);
+    // average cookie sales
+  var avgCookie = Number(event.target.averagecookies.value);
+
+
+  // new object instance
+  new Location(minCust, maxCust, avgCookie, locations);
+
+  // clear the table
+  parent.innerHTML = '';
+  generateHeader();
+  generateContent();
+  generateFooter();
+
+}
+
+cookieForm.addEventListener('submit', handleSubmit);
 
 generateHeader();
 generateContent();
