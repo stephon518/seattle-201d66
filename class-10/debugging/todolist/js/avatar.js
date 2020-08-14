@@ -137,8 +137,8 @@ function generateImage(targetImage) {
   if (generateImage){
     var img = document.createElement('img');
     img.setAttribute('src', targetImage);
-    var characterAvatar = document.getElementById('bigCharacter');
-    characterAvatar.appendChild(img);
+    // var characterAvatar = document.getElementById('bigCharacter');
+    // characterAvatar.appendChild(img);
   }
 }
 

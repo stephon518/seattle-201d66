@@ -2,26 +2,26 @@
 
 var lastLookedAtName = '';
 
-var addDaily = document.getElementById('#dailyForm');
-var addToDo = document.getElementById('#todoForm');
-var updateDailyObjectForm = document.getElementById('#dailyDetails');
-var updateTodoObjectForm = document.getElementById('#todoDetails');
-var dailyListHead = document.getElementById('#dailyLegend');
-var todoListHead = document.getElementById('#todoLegend');
-var dailyModal = document.getElementById('#dailyModal');
-var todoModal = document.getElementById('#todoModal');
-var dailyWarn = document.getElementById('#dailyWarning');
-var todoWarn = document.getElementById('#todoWarning');
+var addDaily = document.getElementById('dailyForm');
+var addToDo = document.getElementById('todoForm');
+var updateDailyObjectForm = document.getElementById('dailyDetails');
+var updateTodoObjectForm = document.getElementById('todoDetails');
+var dailyListHead = document.getElementById('dailyLegend');
+var todoListHead = document.getElementById('todoLegend');
+var dailyModal = document.getElementById('dailyModal');
+var todoModal = document.getElementById('todoModal');
+var dailyWarn = document.getElementById('dailyWarning');
+var todoWarn = document.getElementById('todoWarning');
 var currentPoints = 0;
 
 
 //Need a task object; should use a constructor
 function Task(taskName, taskDescript, taskType, dueDate, pointValue) {
-  this.name = name;
-  this.description = description;
+  this.name = taskName;
+  this.description = taskDescript;
   this.taskType = taskType;
   this.dueDate = dueDate;
-  this.value = value;
+  this.value = pointValue;
   this.completionState = 'open';
   Task.allTasks.push(this);
 }
@@ -140,11 +140,11 @@ function renderDaily() {
       }
       addElement('span', Task.allTasks[i].name, labelElement);
       let modalElement = addElement('p', 'Click me', labelElement);
-      modalElement.addEventListener('click', dailyDetailHandler());
+      modalElement.addEventListener('click', dailyDetailHandler);
 
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
-      inputElement.addEventListener('click', checkboxHandler());
+      inputElement.addEventListener('click', checkboxHandler);
     }
   }
 }
@@ -168,7 +168,7 @@ function renderToDo() {
 
       inputElement.setAttribute('type', 'checkbox');
       inputElement.setAttribute('value', Task.allTasks[i].name);
-      inputElement.addEventListener('click', checkboxHandler());
+      inputElement.addEventListener('click', checkboxHandler);
     }
   }
 }
@@ -322,6 +322,7 @@ var todoDetailModal = document.getElementById('todoDetailModal');
 //event handler for when "Click Me" text area is clicked
 function todoDetailHandler(event) {
   event.preventDefault();
+  debugger;
   let targetedValue = event.target.previousSibling.innerHTML;
   lastLookedAtName = targetedValue;
   let targetedTask = '';
@@ -409,6 +410,7 @@ function updateToDoTask() {
 
 function deleteCurrentTask() {
   event.preventDefault();
+  debugger;
   let bTaskRemoved = removeTask(lastLookedAtName);
   if(bTaskRemoved){
     dailyDetailModal.style.display = 'none';
