@@ -8,6 +8,15 @@ var cart = new Cart([]);
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
+var parentElement = document.getElementById('items');
+for(var i=0;i <Product.allProducts.length; i++){
+  var option = document.createElement('option');
+  option.setAttribute('value', Product.allProducts[i].name);
+  option.textContent = Product.allProducts[i].name;
+  parentElement.appendChild(option);
+}
+
+
 
   //TODO: Add an <option> tag inside the form's select for each product
   var selectElement = document.getElementById('items');
@@ -21,7 +30,7 @@ function populateForm() {
 // object, save the whole thing back to local storage and update the screen
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
-
+  event.preventDefault();
   // TODO: Prevent the page from reloading
 
   // Do all the things ...
@@ -35,10 +44,12 @@ function handleSubmit(event) {
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // TODO: suss out the item picked from the select list
+  if (name === Product.allProducts[i].name){
+    return event.target.quanity.value
+    Cart.push(Product.allProducts[i].name)
   // TODO: get the quantity
   // TODO: using those, add one item to the Cart
 }
-
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {}
 
@@ -49,6 +60,7 @@ function updateCartPreview() {
 }
 
 // Set up the "submit" event listener on the form.
+
 // This is the trigger for the app. When a user "submits" the form, it will
 // Call that handleSubmit method above and kick off the whole process
 var catalogForm = document.getElementById('catalog');
